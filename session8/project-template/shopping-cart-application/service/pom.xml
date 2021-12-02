@@ -22,7 +22,8 @@
         <dependency>
             <groupId>solent.ac.uk.ood.examples</groupId>
             <artifactId>shoppingCartApplication-dao</artifactId>
-            <version>${project.version}</version>
+            <version>0.1-SNAPSHOT</version>
+            <type>jar</type>
         </dependency>
         
         <!-- Exclude Spring Boot's Default Logging -->

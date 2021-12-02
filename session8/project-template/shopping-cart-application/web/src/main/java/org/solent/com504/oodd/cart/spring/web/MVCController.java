@@ -2,6 +2,7 @@ package org.solent.com504.oodd.cart.spring.web;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -135,6 +136,27 @@ public class MVCController {
         // used to set tab selected
         model.addAttribute("selectedPage", "contact");
         return "contact";
+    }
+    
+    @RequestMapping(value = "/catalog", method = {RequestMethod.GET, RequestMethod.POST})
+    public String catalogList(Model model, HttpSession session) {
+
+        // get sessionUser from session
+        User sessionUser = getSessionUser(session);
+        model.addAttribute("sessionUser", sessionUser);
+        
+//        List<ShoppingItem> availableItems = new ArrayList();
+//        ShoppingItem item = new ShoppingItem();
+//        item.setName("apple");
+//        availableItems.add(item);
+
+        List<ShoppingItem> availableItems = shoppingService.getAvailableItems();
+
+        model.addAttribute("availableItems", availableItems);
+        
+        // used to set tab selected
+        model.addAttribute("selectedPage", "admin");
+        return "catalog";
     }
 
 
